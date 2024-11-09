@@ -56,8 +56,12 @@ app.post('/useradding',async(req,res)=>{
 
 })
 
-app.get('/dashboard',async(req,res)=>{
+app.post('/dashboard',async(req,res)=>{
+  const {currentDate}=req.body
+ 
   
+  const result=await server.dashboard(currentDate)
+  res.status(result.statusCode).send(result)
 })
 app.get('/patients',async(req,res)=>{
   const result = await server.patients()
@@ -89,6 +93,23 @@ app.post('/checkCurrentPassword',async(req,res)=>{
 app.post('/changePassword',async(req,res)=>{
   const {oldPassword,newPassword}=req.body 
   const result = await server.changePassword(oldPassword,newPassword)  
+  res.status(result.statusCode).send(result)
+  
+})
+app.get('/usertype',async(req,res)=>{
+  
+  const result = await server.userType()  
+  res.status(result.statusCode).send(result)
+  
+})
+app.get('/usertype',async(req,res)=>{
+  const result = await server.userType()  
+  res.status(result.statusCode).send(result)
+  
+})
+app.post('/newUsertype',async(req,res)=>{
+  const{key,name,type}=req.body
+  const result = await server.newUserType(key,name,type)  
   res.status(result.statusCode).send(result)
   
 })
