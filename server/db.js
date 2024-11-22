@@ -64,8 +64,6 @@ const usertypeSchema = new mongoose.Schema({
 const Usertypes = mongoose.model('Usertype', usertypeSchema);
 
 
-
-
 module.exports={
   User,
   Patients,
